@@ -8,6 +8,6 @@ script:
     - docker run -e CI=true dbernat/fibotest npm run test
 
 after_success:
-    - docker build -t dbernat/fibo-client-k8s   ./client
+    - docker build -t dbernat/fibo-client-k8s:1.0.0   ./client
     - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
     - docker push dbernat/fibo-client-k8s
